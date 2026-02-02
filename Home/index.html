@@ -161,7 +161,7 @@
                         if (!href || !href.includes("article=")) return;
 
                         const articleID = href.split("article=")[1];
-                        const url = "articles/" + articleID + ".html";
+                        const url = "../articles/" + articleID + ".html";
 
                         try {
                             const response = await fetch(url);
@@ -208,3 +208,4 @@
     </script>
 </body>
 </html>
+
