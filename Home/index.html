@@ -195,7 +195,7 @@
                             console.error("Erreur chargement article", url, err);
                             const h3 = a.querySelector("h3");
                             if (h3) h3.innerText = 'no article found error';
-                            h3.setProperty("color", "red", "important");
+                            h3.style.color = "red";
                         }
                     })();
                 });
