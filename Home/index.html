@@ -149,54 +149,54 @@
         }
 
         async function chargerTitresArticles() {
-    const blocsArticles = document.querySelectorAll(".articles");
+            const blocsArticles = document.querySelectorAll(".articles");
 
-    blocsArticles.forEach(bloc => {
-        const liens = bloc.querySelectorAll("a");
+            blocsArticles.forEach(bloc => {
+                const liens = bloc.querySelectorAll("a");
 
-        liens.forEach(a => {
-            const href = a.getAttribute("href");
-            if (!href) return;
+                liens.forEach(a => {
+                    const href = a.getAttribute("href");
+                    if (!href) return;
 
-            // Résolution fiable du paramètre article
-            let articleID;
-            try {
-                const linkUrl = new URL(href, window.location.href);
-                articleID = linkUrl.searchParams.get('article');
-            } catch (err) {
-                console.error("Erreur parsing href:", href, err);
-                return;
-            }
-            if (!articleID) return;
+                    // Résolution fiable du paramètre article
+                    let articleID;
+                    try {
+                        const linkUrl = new URL(href, window.location.href);
+                        articleID = linkUrl.searchParams.get('article');
+                    } catch (err) {
+                        console.error("Erreur parsing href:", href, err);
+                        return;
+                    }
+                    if (!articleID) return;
 
-            // Ajustez ce chemin selon l'emplacement réel de vos fichiers articles
-            // Si les fichiers sont dans root/articles/1.html et index.html dans home/, alors "../articles/1.html" est correct.
-            // Si les fichiers sont dans home/articles/, utilisez "articles/" + articleID + ".html"
-            const url = "../articles/" + articleID + ".html";
+                    // Ajustez ce chemin selon l'emplacement réel de vos fichiers articles
+                    // Si les fichiers sont dans root/articles/1.html et index.html dans home/, alors "../articles/1.html" est correct.
+                    // Si les fichiers sont dans home/articles/, utilisez "articles/" + articleID + ".html"
+                    const url = "../articles/" + articleID + ".html";
 
-            (async () => {
-                try {
-                    const response = await fetch(url);
-                    if (!response.ok) throw new Error("HTTP " + response.status + " " + response.statusText);
+                    (async () => {
+                        try {
+                            const response = await fetch(url);
+                            if (!response.ok) throw new Error("HTTP " + response.status + " " + response.statusText);
 
-                    const html = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, "text/html");
+                            const html = await response.text();
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, "text/html");
 
-                    // Chercher le titre - fallback sur h1 ou meta og:title
-                    let titre = doc.querySelector('title')?.innerText?.trim();
-                    if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
-                    if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
-                    if (!titre) titre = "Titre introuvable";
+                            // Chercher le titre - fallback sur h1 ou meta og:title
+                            let titre = doc.querySelector('title')?.innerText?.trim();
+                            if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
+                            if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
+                            if (!titre) titre = "Titre introuvable";
 
-                    const h3 = a.querySelector("h3");
-                    if (h3) h3.innerText = titre;
-                } catch (err) {
-                    console.error("Erreur chargement article", url, err);
-                }
-            })();
-        });
-    });
+                            const h3 = a.querySelector("h3");
+                            if (h3) h3.innerText = titre;
+                        } catch (err) {
+                            console.error("Erreur chargement article", url, err);
+                        }
+                    })();
+                });
+            });
             
         chargerTitresArticle()
         classe1();
@@ -219,6 +219,7 @@
     </script>
 </body>
 </html>
+
 
 
 
