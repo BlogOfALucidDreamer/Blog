@@ -26,24 +26,23 @@
             return response.text();
         })
         .then(data => {
-            // Injecte l'article dans la page
-            const bodyContent = doc.body.innerHTML;
-
-            containBlock.innerHTML = bodyContent
-            
-            // Parse le HTML récupéré
             const parser = new DOMParser();
             const doc = parser.parseFromString(data, "text/html");
 
-            // Récupération intelligente du titre
+            // Contenu du body uniquement
+            const bodyContent = doc.body.innerHTML;
+
+            containBlock.innerHTML = bodyContent;
+
+            // Titre (ta logique)
             let titre = doc.querySelector('title')?.innerText?.trim();
             if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
             if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
             if (!titre) titre = "Titre introuvable";
 
-            // Applique le titre à la page
             document.title = titre;
         })
+
         .catch(error => {
             notFoundMessage();
         });
@@ -59,5 +58,6 @@
 
 
 </html>
+
 
 
