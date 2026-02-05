@@ -12,26 +12,41 @@
     <div id="containBlock"></div>
 </body>
 <script>
-    const containBlock = document.getElementById("containBlock");
-
+    const containBlock = document.getElementById('containBlock');
+    
     function chargeArticles() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const articleId = urlParams.get("article");
-        fetch(`../articles/${articleId}.html`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Article not found');
-                }
-                return response.text();
-            })
-            .then(data => {
-                containBlock.innerHTML = data;
-            })
-            .catch(error => {
-                notFoundMessage();
-            });
-        
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get("article");
+
+    fetch(`../articles/${articleId}.html`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Article not found");
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Injecte l'article dans la page
+            containBlock.innerHTML = data;
+
+            // Parse le HTML récupéré
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, "text/html");
+
+            // Récupération intelligente du titre
+            let titre = doc.querySelector('title')?.innerText?.trim();
+            if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
+            if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
+            if (!titre) titre = "Titre introuvable";
+
+            // Applique le titre à la page
+            document.title = titre;
+        })
+        .catch(error => {
+            notFoundMessage();
+        });
     }
+
 
     function notFoundMessage() {
         window.location.href = "../404.html";
@@ -42,3 +57,4 @@
 
 
 </html>
+
