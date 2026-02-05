@@ -27,8 +27,10 @@
         })
         .then(data => {
             // Injecte l'article dans la page
-            containBlock.innerHTML = data;
+            const bodyContent = doc.body.innerHTML;
 
+            containBlock.innerHTML = bodyContent
+            
             // Parse le HTML récupéré
             const parser = new DOMParser();
             const doc = parser.parseFromString(data, "text/html");
@@ -57,4 +59,5 @@
 
 
 </html>
+
 
