@@ -51,8 +51,8 @@ h1{
     text-decoration: none;
 }
 
-#LegalNoticeBox{
-    margin-top: 75px;
+#legalNoticeBox a{
+    text-decoration: none;
 }
 
 h2, h3{
