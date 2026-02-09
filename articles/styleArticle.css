@@ -35,7 +35,7 @@ h1{
 }
 
 #homeBTN{
-    margin: 10px 0 0 10px;
+    margin: 10px 0 10px 0;
     display: flex;
     border-radius: 10px;
     width: 85px;
