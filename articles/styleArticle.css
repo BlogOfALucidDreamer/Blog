@@ -35,14 +35,20 @@ h1{
 }
 
 #homeBTN{
+    margin: 10px 0 0 10px;
     display: flex;
     border-radius: 10px;
-    height: 40px;
+    width: 85px;
     padding: 5px;
-    position: fixed;
-    top: 15px;
-    left: 0px;
+    background-color: #EEEEEE;
+    text-decoration: none;
+}
 
+#homeBTN p{
+    margin: 0;
+    margin-left: 5px;
+    color:black;
+    text-decoration: none;
 }
 
 #LegalNoticeBox{
