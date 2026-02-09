@@ -218,23 +218,18 @@
                 });
             });
         }
-        chargerTitresArticles()
+
+        function serachInf(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const class = urlParams.get('class');
+        }
+
+
+        chargerTitresArticles();
+        serachInf();
         classe1();
 
-        /*
-            const urlParams = new URLSearchParams(window.location.search);
-            const article = urlParams.get('article');
-
-            if(article >= 1 && article <= 3){
-                classe1();
-            } else if(article >= 4 && article <= 6){
-                classe2();
-            } else if(article >= 7 && article <= 9){
-                classe3();
-            } else if(article >= 10 && article <= 12){
-                classe4();
-            }
-        */
+        
     </script>
 </body>
 </html>
