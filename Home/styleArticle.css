@@ -111,6 +111,10 @@ p{
     font-weight: 600;
 }
 
+a {
+    color: #114c81;
+}
+
 footer {
     display: flex;
     width: 800px;
@@ -128,4 +132,5 @@ footer a {
     border: none;
     box-shadow: none;
 }
+
 
