@@ -49,10 +49,31 @@ body{
 }
 
 h1{
-    text-wrap: balance;
-    font-size: 4rem;
-    line-height: 1.15;
-    font-weight: 700;
+  text-wrap: balance;
+  font-size: 4rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+#homeBTN{
+    margin: 10px 0 10px 0;
+    display: flex;
+    border-radius: 10px;
+    width: 85px;
+    padding: 5px;
+    background-color: #EEEEEE;
+    text-decoration: none;
+}
+
+#homeBTN p{
+    margin: 0;
+    margin-left: 5px;
+    color:black;
+    text-decoration: none;
+}
+
+#legalNoticeBox a{
+    text-decoration: none;
 }
 
 h2, h3{
@@ -110,4 +131,5 @@ p{
     color: #114c81;
     font-weight: 600;
 }
+
 
