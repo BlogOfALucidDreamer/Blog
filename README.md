@@ -1,4 +1,4 @@
 # Blog
 A Blog about lucid dreaming
 
-Thank to the french tech youtuber @AKDev for the web design.
+Special thank to the french tech youtuber <a href="https://www.youtube.com/@akdevyt">@AKDev</a> for the web design.
