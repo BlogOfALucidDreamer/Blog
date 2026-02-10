@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 not found</title>
+    <link rel="stylesheet" href="styleArticle.css">
 </head>
+
 <body>
-    div#
+    <div id="containBlock"></div>
 </body>
+<script>
+    const containBlock = document.getElementById('containBlock');
+    
+    function chargeArticles() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get("article");
+
+    fetch(`../articles/${articleId}.html`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Article not found");
+            }
+            return response.text();
+        })
+        .then(data => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, "text/html");
+
+            // Contenu du body uniquement
+            const bodyContent = doc.body.innerHTML;
+
+            containBlock.innerHTML = bodyContent;
+
+            // Titre (ta logique)
+            let titre = doc.querySelector('title')?.innerText?.trim();
+            if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
+            if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
+            if (!titre) titre = "Titre introuvable";
+
+            document.title = titre;
+        })
+
+        .catch(error => {
+            notFoundMessage();
+        });
+    }
+
+
+    function notFoundMessage() {
+        window.location.href = "../404.html";
+    }
+
+    chargeArticles();
+</script>
+
+
 </html>
+
+
+
