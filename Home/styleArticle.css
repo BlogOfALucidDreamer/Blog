@@ -111,3 +111,20 @@ p{
     font-weight: 600;
 }
 
+footer {
+    display: flex;
+    width: 800px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 10px;
+}
+
+footer a {
+    margin-top: 0;
+    display: inline;
+    width: auto;
+    height: auto;
+    border: none;
+    box-shadow: none;
+}
