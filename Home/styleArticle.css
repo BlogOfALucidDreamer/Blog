@@ -13,7 +13,7 @@ body{
 }
 
 #containBlock{
-    width: 100%;
+    width: calc(100% - 70px);
     height: 100%;
 }
 
@@ -132,5 +132,6 @@ footer a {
     border: none;
     box-shadow: none;
 }
+
 
 
