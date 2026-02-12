@@ -95,6 +95,13 @@ a{
 
 }
 
+#imgArticle{
+    height: 80%;
+    margin: auto 0 auto 10px;
+    aspect-ratio: 16/16;
+    object-fit: cover;
+}
+
 footer {
     display: flex;
     width: 100%;
