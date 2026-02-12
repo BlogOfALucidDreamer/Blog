@@ -96,8 +96,8 @@ a{
 }
 
 #imgArticle{
-    height: 90%;
-    margin: auto 0 auto 10px;
+    height: 80%;
+    margin: auto 0 auto 5px;
     aspect-ratio: 4/3;
     object-fit: cover;
     border-radius: 5px;
