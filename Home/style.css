@@ -96,10 +96,11 @@ a{
 }
 
 #imgArticle{
-    height: 80%;
+    height: 90%;
     margin: auto 0 auto 10px;
-    aspect-ratio: 16/16;
+    aspect-ratio: 4/3;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 footer {
