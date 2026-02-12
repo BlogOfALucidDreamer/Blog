@@ -145,3 +145,9 @@ footer a {
     border: none;
     box-shadow: none;
 }
+
+@media(max-width: 460px;){
+    h1{
+        text-wrap: initial;
+    }
+}
