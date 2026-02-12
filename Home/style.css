@@ -44,11 +44,11 @@ h1{
     display: initial;
     height: initial;
     width: initial;
-    text-decoration: initial;
+    text-decoration: underline;
     color:#114c81;
     border-radius: 0;
-    border: 2px solid #114c81;
-    box-shadow: 0;
+    border: 0;
+    box-shadow: none;
 }
 
 #classes_selector{
