@@ -39,6 +39,18 @@ h1{
     margin-left: 20px;
 }
 
+#description a{
+    margin-top: 0;
+    display: initial;
+    height: initial;
+    width: initial;
+    text-decoration: initial;
+    color:#114c81;
+    border-radius: 0;
+    border: 2px solid #114c81;
+    box-shadow: 0;
+}
+
 #classes_selector{
     display: flex;
     margin-top: 20px;
