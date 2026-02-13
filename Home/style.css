@@ -42,6 +42,7 @@ h3{
 #description{
     margin-bottom: 30px;
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 #description a{
@@ -95,7 +96,7 @@ a{
 
 }
 
-#imgArticle{
+.imgArticle{
     height: 80%;
     margin: auto 0 auto 5px;
     aspect-ratio: 4/3;
