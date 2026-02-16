@@ -136,7 +136,7 @@ a {
     justify-content: space-between;
 }
 
-#arrows a{
+#arrows a, #arrows .arrows{
     text-decoration: none;
     display: flex;
     padding: 5px;
