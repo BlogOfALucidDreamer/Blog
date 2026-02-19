@@ -136,7 +136,7 @@ a {
     justify-content: space-between;
 }
 
-#arrows a, #arrows .arrows{
+#arrows a{
     text-decoration: none;
     display: flex;
     padding: 5px;
@@ -152,6 +152,18 @@ a {
 
 .arrows p{
     margin: 0;
+}
+
+#arrowDisabled{
+    pacity: 0.5;
+    cursor: not-allowed;
+    text-decoration: none;
+    display: flex;
+    padding: 5px;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    justify-content: center;
+    width: 100px;
 }
 
 footer {
