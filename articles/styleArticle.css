@@ -131,7 +131,7 @@ a {
     color: #114c81;
 }
 
-#arrows{
+.arrows{
     display: flex;
     justify-content: space-between;
 }
@@ -155,7 +155,7 @@ a {
 }
 
 #arrowDisabled{
-    pacity: 0.5;
+    opacity: 0.5;
     cursor: not-allowed;
     text-decoration: none;
     display: flex;
