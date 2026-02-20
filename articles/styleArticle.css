@@ -131,7 +131,7 @@ a {
     color: #114c81;
 }
 
-.arrows{
+#arrows{
     display: flex;
     justify-content: space-between;
 }
