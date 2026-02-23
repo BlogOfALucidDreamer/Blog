@@ -48,6 +48,8 @@
 
                         if (progress < 0) progress = 0;
                         if (progress > 100) progress = 100;
+                        if (progress >= 90) progress = 100;
+                        
 
                         const oldProgress = parseInt(localStorage.getItem("progress_" + articleId)) || 0;
 
