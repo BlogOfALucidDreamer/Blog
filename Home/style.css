@@ -124,9 +124,12 @@ a{
     bottom: 15px;
     right: 13px;
     font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.5px;
     background-color: #dddddd;
-    padding: 1px 15px;
+    padding: 3px 12px;
     border-radius: 10px;
+    text-transform: uppercase;
 }
 
 footer {
