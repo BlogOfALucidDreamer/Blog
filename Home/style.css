@@ -104,6 +104,19 @@ a{
     border-radius: 5px;
 }
 
+.progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.3);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    transition: width 0.4s ease;
+}
+
 footer {
     display: flex;
     width: 100%;

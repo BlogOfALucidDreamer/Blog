@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,20 @@
     <meta name="apple-mobile-web-app-title" content="MyLucidBlog" />
     <link rel="manifest" href="/Blog/icons/site.webmanifest" />
 </head>
+
 <body>
     <div class="boxed">
         <h1>Lucid Dreams:<br>Explore the impossible</h1>
         <img class="cover" src="../img/lucid-dream.jpg" alt="Home picture">
         <p id="description">
-            Do you know you spend nearly 15% of your whole life dreaming ? It is 15% of your life where you're lying in your bed inconscious dreaming and sometimes you doesn't even remember your dreams. What if I tell you that you can live this 15% of your life in a world where everything is possible, where your only limit is your imagination ? If you're here you may already know <a href="articles.html?article=1">what a lucid dream is</a> but maybe you weren't able to manage this amazing superpower of life or you may be looking for advice or techniques to improve your skills ? But guess what ? You are in the right place ! On this blog, I will share my insights, and reflections about lucid dreams and we will learn together everything about this amazing thing that is lucid dreaming ! So welcome, sit comfortably and enjoy this adventure !
+            Do you know you spend nearly 15% of your whole life dreaming ? It is 15% of your life where you're lying in
+            your bed inconscious dreaming and sometimes you doesn't even remember your dreams. What if I tell you that
+            you can live this 15% of your life in a world where everything is possible, where your only limit is your
+            imagination ? If you're here you may already know <a href="articles.html?article=1">what a lucid dream
+                is</a> but maybe you weren't able to manage this amazing superpower of life or you may be looking for
+            advice or techniques to improve your skills ? But guess what ? You are in the right place ! On this blog, I
+            will share my insights, and reflections about lucid dreams and we will learn together everything about this
+            amazing thing that is lucid dreaming ! So welcome, sit comfortably and enjoy this adventure !
         </p>
         <div id="classes_selector">
             <div class="classe_selector" id="classe_selector1" onclick="classe(1)">
@@ -167,28 +176,28 @@
         */
 
 
-        function classe(classeNumber){
+        function classe(classeNumber) {
             let sel
             let c
-            if (classeNumber){
-                sel = document.getElementById("classe_selector"+classeNumber)
-                c = document.getElementById("classe"+classeNumber);
-            }else{
+            if (classeNumber) {
+                sel = document.getElementById("classe_selector" + classeNumber)
+                c = document.getElementById("classe" + classeNumber);
+            } else {
                 sel = document.getElementById("classe_selector1")
                 c = document.getElementById("classe1");
             }
 
             if (!sel || !c) return;
-            
+
             document.querySelectorAll("#classes_selector > *")
-            .forEach(el => {
-                el.style.borderBottom = "none";
-            });
+                .forEach(el => {
+                    el.style.borderBottom = "none";
+                });
 
             document.querySelectorAll("#classes_container > *")
-            .forEach(el => {
-                el.style.display = "none";
-            });
+                .forEach(el => {
+                    el.style.display = "none";
+                });
 
             sel.style.borderBottom = "3px solid #114c81";
             c.style.display = "block";
@@ -249,26 +258,51 @@
             });
         }
 
+        document.querySelectorAll('.articles a[href*="articles.html?article="]').forEach(link => {
+
+            const url = new URL(link.href, window.location.origin);
+            const articleId = url.searchParams.get("article");
+
+            if (!articleId) return;
+
+            const progress = parseInt(localStorage.getItem("progress_" + articleId)) || 0;
+
+            // Création barre
+            const progressBar = document.createElement("div");
+            progressBar.classList.add("progress-bar");
+
+            const progressFill = document.createElement("div");
+            progressFill.classList.add("progress-fill");
+            progressFill.style.width = progress + "%";
+
+            progressBar.appendChild(progressFill);
+
+            // Positionnement
+            link.style.position = "relative";
+            progressBar.style.position = "absolute";
+            progressBar.style.bottom = "0";
+            progressBar.style.left = "0";
+            progressBar.style.width = "100%";
+
+            link.appendChild(progressBar);
+        });
+
 
 
         chargerTitresArticles();
 
         const urlParams = new URLSearchParams(window.location.search);
         const classeParam = urlParams.get('classe');
-        if (classeParam){
+        if (classeParam) {
             classe(classeParam)
-        }else{
+        } else {
             classe()
         }
 
-        
+
     </script>
 </body>
+
 </html>
-
-
-
-
-
 
 
