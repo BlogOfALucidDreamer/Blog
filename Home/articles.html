@@ -38,24 +38,20 @@
                 function initReadingProgress(articleId) {
 
                     function updateReadingProgress() {
-                        const articleElement = containBlock;
 
                         const scrollTop = window.scrollY;
-                        const elementTop = articleElement.offsetTop;
-                        const elementHeight = articleElement.offsetHeight;
-                        const windowHeight = window.innerHeight;
+                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-                        const distanceScrolled = scrollTop - elementTop;
-                        const totalScrollable = elementHeight - windowHeight;
+                        if (docHeight <= 0) return; // évite division par 0
 
-                        let progress = Math.round((distanceScrolled / totalScrollable) * 100);
+                        let progress = Math.round((scrollTop / docHeight) * 100);
 
                         if (progress < 0) progress = 0;
                         if (progress > 100) progress = 100;
 
                         const oldProgress = parseInt(localStorage.getItem("progress_" + articleId)) || 0;
 
-                        // 🔒 On garde uniquement le maximum atteint
+                        // 🔒 On garde uniquement le max atteint
                         if (progress > oldProgress) {
                             localStorage.setItem("progress_" + articleId, progress);
                         }
