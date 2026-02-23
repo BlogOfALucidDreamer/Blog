@@ -5,53 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="styleArticle.css">
 </head>
 
 <body>
     <div id="containBlock"></div>
     <footer>
-            <p>&copy; 2026 My Blog. All rights reserved.</p>
-            <a href="/Blog/legal_notice.html" id="mentionsLégales">Mentions légales</a>
+        <p>&copy; 2026 My Blog. All rights reserved.</p>
+        <a href="/Blog/legal_notice.html" id="mentionsLégales">Mentions légales</a>
     </footer>
 </body>
 <script>
     const containBlock = document.getElementById('containBlock');
-    
+
     function chargeArticles() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get("article");
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get("article");
 
-    fetch(`../articles/${articleId}.html`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Article not found");
-            }
-            return response.text();
-        })
-        .then(data => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data, "text/html");
+        fetch(`../articles/${articleId}.html`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Article not found");
+                }
+                return response.text();
+            })
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, "text/html");
 
-            // Contenu du body uniquement
-            const bodyContent = doc.body.innerHTML;
+                // Contenu du body uniquement
+                const bodyContent = doc.body.innerHTML;
 
-            containBlock.innerHTML = bodyContent;
+                containBlock.innerHTML = bodyContent;
 
-            // Titre (ta logique)
-            let titre = doc.querySelector('title')?.innerText?.trim();
-            if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
-            if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
-            if (!titre) titre = "Titre introuvable";
+                function initReadingProgress(articleId) {
 
-            document.title = titre;
-        })
+                    function updateReadingProgress() {
+                        const articleElement = containBlock;
 
-        .catch(error => {
-            notFoundMessage();
-        });
+                        const scrollTop = window.scrollY;
+                        const elementTop = articleElement.offsetTop;
+                        const elementHeight = articleElement.offsetHeight;
+                        const windowHeight = window.innerHeight;
+
+                        const distanceScrolled = scrollTop - elementTop;
+                        const totalScrollable = elementHeight - windowHeight;
+
+                        let progress = Math.round((distanceScrolled / totalScrollable) * 100);
+
+                        if (progress < 0) progress = 0;
+                        if (progress > 100) progress = 100;
+
+                        const oldProgress = parseInt(localStorage.getItem("progress_" + articleId)) || 0;
+
+                        // 🔒 On garde uniquement le maximum atteint
+                        if (progress > oldProgress) {
+                            localStorage.setItem("progress_" + articleId, progress);
+                        }
+                    }
+
+                    window.addEventListener("scroll", updateReadingProgress);
+                }
+
+                initReadingProgress()
+
+                // Titre (ta logique)
+                let titre = doc.querySelector('title')?.innerText?.trim();
+                if (!titre) titre = doc.querySelector('h1')?.innerText?.trim();
+                if (!titre) titre = doc.querySelector('meta[property="og:title"]')?.content;
+                if (!titre) titre = "Titre introuvable";
+
+                document.title = titre;
+            })
+
+            .catch(error => {
+                notFoundMessage();
+            });
     }
 
 
@@ -64,8 +94,3 @@
 
 
 </html>
-
-
-
-
-
