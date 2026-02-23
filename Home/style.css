@@ -79,6 +79,7 @@ a{
     display: flex;
     height: 50px;
     width: 100%;
+    padding-bottom: 5px;
     text-decoration: none;
     color:#114c81;
     border-radius: 5px;
@@ -112,8 +113,9 @@ a{
 
 .progress-fill {
     height: 100%;
+    border-radius: 0 0 2px 2px;
     width: 0%;
-    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    background: linear-gradient(90deg, #114c81, #bcf8fb);
     transition: width 0.4s ease;
 }
 
@@ -134,7 +136,3 @@ footer a {
     border: none;
     box-shadow: none;
 }
-
-
-
-
