@@ -155,7 +155,6 @@ footer a {
 /* separate */
 @media (max-width: 400px;){
     #classes_selector {
-        flex-wrap: wrap;        /* autorise les éléments à aller à la ligne si nécessaire */
         overflow-x: auto;       /* permet le scroll si les éléments débordent */
     }
 }
