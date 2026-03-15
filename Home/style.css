@@ -150,3 +150,31 @@ footer a {
     border: none;
     box-shadow: none;
 }
+
+
+/* separate */
+
+#classes_selector {
+    display: flex;
+    overflow-x: auto; /* permet de scroller horizontalement */
+    gap: 10px;        /* espace entre les éléments */
+    padding-bottom: 10px; /* un peu de marge */
+    -webkit-overflow-scrolling: touch; /* pour un scroll smooth sur iOS */
+}
+
+.classe_selector {
+    flex: 0 0 auto; /* empêche les éléments de se réduire automatiquement */
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    white-space: nowrap; /* empêche le texte de casser sur plusieurs lignes */
+}
+
+#classes_selector::-webkit-scrollbar {
+    display: none; /* pour Chrome/Safari */
+}
+#classes_selector {
+    -ms-overflow-style: none;  /* pour IE et Edge */
+    scrollbar-width: none;     /* pour Firefox */
+}
