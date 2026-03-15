@@ -150,19 +150,3 @@ footer a {
     border: none;
     box-shadow: none;
 }
-
-
-/* separate */
-@media (max-width: 400px;){
-    #classes_selector {
-        overflow-x: auto;       /* permet le scroll si les éléments débordent */
-    }
-}
-
-#classes_selector::-webkit-scrollbar {
-    display: none; /* pour Chrome/Safari */
-}
-#classes_selector {
-    -ms-overflow-style: none;  /* pour IE et Edge */
-    scrollbar-width: none;     /* pour Firefox */
-}
