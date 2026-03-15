@@ -153,24 +153,11 @@ footer a {
 
 
 /* separate */
-
-#classes_selector {
-    display: flex;
-    flex-wrap: wrap;        /* autorise les éléments à aller à la ligne si nécessaire */
-    gap: 10px;              /* espace entre les éléments */
-    overflow-x: auto;       /* permet le scroll si les éléments débordent */
-    padding-bottom: 10px;
-}
-
-.classe_selector {
-    flex: 1 1 150px;        /* base = 150px, peut s'agrandir (1) et se rétrécir (1) */
-    min-width: 120px;       /* largeur minimale avant de passer à la ligne */
-    padding: 10px 15px;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    white-space: nowrap;    /* empêche le texte de casser */
+@media (max-width: 400px;){
+    #classes_selector {
+        flex-wrap: wrap;        /* autorise les éléments à aller à la ligne si nécessaire */
+        overflow-x: auto;       /* permet le scroll si les éléments débordent */
+    }
 }
 
 #classes_selector::-webkit-scrollbar {
